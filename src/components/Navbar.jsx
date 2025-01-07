@@ -9,9 +9,9 @@ import Wrapper from "../assets/wrappers/Navbar"
 const Navbar = () => {
   return (
     <Wrapper>
-        <div class="nav-center">
+        <div className="nav-center">
             <span className="logo">Mix Master</span>
-            <div class="nav-links">
+            <div className="nav-links">
                 <NavLink to="/" className="nav-link">Home</NavLink>
                 <NavLink to="/about" className="nav-link">About</NavLink>
                 <NavLink to="/newsletter" className="nav-link">Newsletter</NavLink>
