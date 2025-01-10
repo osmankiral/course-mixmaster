@@ -4,7 +4,7 @@ import CocktailList from "../components/CocktailList";
 import SearchForm from "../components/SearchForm";
 
 const cocktailSearchUrl = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
-import { useQuery } from "@tanstack/react-query";
+import { QueryClient, useQuery } from "@tanstack/react-query";
 
 const searchCocktailQuery = (searchTerm) => {
   return{
@@ -17,9 +17,10 @@ const searchCocktailQuery = (searchTerm) => {
   }
 }
 
-export const loader = async ({request}) => {
+export const loader = (queryClient) => async ({request}) => {
   const url = new URL(request.url)
   const searchTerm = url.searchParams.get('search') || 'a';
+  await queryClient.ensureQueryData(searchCocktailQuery(searchTerm))
   
   return {searchTerm}
 };
